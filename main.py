@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
+from fastapi.middleware.cors import CORSMiddleware
 import httpx
 import socket
 from urllib.parse import urlparse
@@ -8,11 +9,7 @@ import time
 
 app = FastAPI()
 
-# Allow frontend at localhost:3000 to call this API
-origins = [
-    "http://localhost:3000",
-    "http://127.0.0.1:3000",
-]
+origins = ["*"]  # allow all for now
 
 app.add_middleware(
     CORSMiddleware,
